@@ -31,7 +31,7 @@ const UserSigIn = async (req,res)=>{
            return res.status(401).send({message:"invalid Credentials"})
          }
 
-      const token = jsonwebtoken.sign({sub:existUser.id},"vishal234",{expiresIn:'7d'});
+      const token = jsonwebtoken.sign({sub:existUser.id},process.env.JWT_SECRET,{expiresIn:'7d'});
         console.log("the token is a",token)
       // res.cookie("jsontoken",token,{httpOnly:true})
       res.status(201).send({message:"the user is looged in successfull",token})

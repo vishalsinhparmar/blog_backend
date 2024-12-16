@@ -4,13 +4,13 @@ const sendMailUtils = async(to,subject,text)=>{
     const transporter = nodemailer.createTransport({
         service:'Gmail',
         auth:{
-            user:"vishalsinhparmar821@gmail.com",
-            pass:"solr dzul ouvj rwun",
+            user:process.env.NODEMAILER_USER,
+            pass:process.env.NODEMAILER_PASS,
         },
     });
 
     await transporter.sendMail({
-        from:"vishalsinhparmar821@gmail.com",
+        from:process.env.NODEMAILER_USER,
         to,
         subject,
         text,

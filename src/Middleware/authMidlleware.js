@@ -6,7 +6,7 @@ const verifyUserLoggedin = (req,res,next)=>{
         res.status(401).send({message:"user is unotherized"})
       }
 
-       jsontoken.verify(token,"vishal234",(err,user)=>{
+       jsontoken.verify(token,process.env.JWT_SECRET,(err,user)=>{
         if(err){
             res.status(401).send({message:"not user is logged please first logged in"})
         }else{

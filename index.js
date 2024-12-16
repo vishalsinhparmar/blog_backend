@@ -7,9 +7,9 @@ const blogrouter = require('./src/routes/blogroute.js')
 const cors = require('cors')
 
 app.use('/uploads',express.static('uploads'));
-mongoose.connect('mongodb://localhost:27017/UserData')
+mongoose.connect(`${process.env.MONGODB_URL}`)
 .then(()=> console.log('the dataBase is connected'))
-.catch((err)=>console.log(err))
+.catch((err)=>console.log(err.message))
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded());

@@ -109,7 +109,8 @@ const userBlogUpdateshowbyid = async (req,res)=>{
 const userUpdateBlog = async (req,res)=>{
     const {id} = req.params;
     const {title,description} = req.body;
-    const blogImage = `http://localhost:5000/${req.file.path.replace(/\\/g,'/')}`;
+    const blogImage = req.file.path;
+   
 
     
     // console.log('the updated data sent by client',updateData)

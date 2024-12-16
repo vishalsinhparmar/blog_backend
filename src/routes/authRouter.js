@@ -1,5 +1,5 @@
 const express = require('express');
-const {UserSigUp,UserSigIn,fileupload, getUser, verifyEmail, forgottenPassword, resetPassword} = require('../Controller/User/auth.user.js')
+const {UserSigUp,UserSigIn, getUser, verifyEmail, forgottenPassword, resetPassword} = require('../Controller/User/auth.user.js')
 const upload = require('../utils/multer.js');
 const authMiddleware = require('../Middleware/authMidlleware.js')
 
