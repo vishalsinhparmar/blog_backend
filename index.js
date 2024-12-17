@@ -18,4 +18,4 @@ app.use('/api/blog',blogrouter);
 
 
 
-app.listen(5000,()=> console.log('the server is running http://localhost:5000'))
+app.listen(process.env.PORT,()=> console.log('the server is running http://localhost:5000'))
