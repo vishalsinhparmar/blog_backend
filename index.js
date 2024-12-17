@@ -10,7 +10,12 @@ app.use('/uploads',express.static('uploads'));
 mongoose.connect(`${process.env.MONGODB_URL}`)
 .then(()=> console.log('the dataBase is connected'))
 .catch((err)=>console.log(err.message))
-app.use(cors());
+const corsOptions = {
+    origin: ["https://your-frontend-url.vercel.app", "http://localhost:5173"], // Allowed origins
+    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    credentials: true, // Allow cookies if needed
+  };
+app.use(cors(corsOptions));
 app.use(express.json());
 app.use(express.urlencoded());
 app.use('/api/auth',authrouter);
