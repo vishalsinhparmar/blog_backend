@@ -12,7 +12,7 @@ mongoose.connect(`${process.env.MONGODB_URL}`)
 .catch((err)=>console.log(err.message))
 const corsOptions = {
     origin: ["https://your-frontend-url.vercel.app", "http://localhost:5174"], // Allowed origins
-    methods: ["GET", "POST", "PUT", "DELETE"], // Allowed methods
+    methods: ["GET", "POST", "PUT", "DELETE","PATCH"], // Allowed methods
     credentials: true, // Allow cookies if needed
   };
 app.use(cors(corsOptions));
