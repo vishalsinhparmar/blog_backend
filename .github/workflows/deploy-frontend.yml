@@ -1,0 +1,24 @@
+name: Deploy Backend
+
+on:
+  push:
+    branches:
+      - main  # Triggers when changes are pushed to the `main` branch
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest  # Run on the latest version of Ubuntu
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v2  # Checkout the code from the repository
+
+    - name: Trigger Render Deploy via API
+      run: |
+        curl -X POST \
+          -H "Authorization: Bearer ${{ secrets.RENDER_API_KEY }}" \
+          "https://api.render.com/v1/services/${{ secrets.RENDER_SERVICE_ID }}/deploys"
+      # Explanation:
+      # - The curl command uses the Render API to trigger a deployment.
+      # - Authorization: Bearer ${{ secrets.RENDER_API_KEY }} sends the API key for authentication.
+      # - The Service ID is passed in the URL to specify which service to deploy.
