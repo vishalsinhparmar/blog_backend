@@ -83,7 +83,7 @@ const UserSigUp = async (req,res)=>{
          })
          const verifyToken = jsonwebtoken.sign({id:newUser._id},process.env.JWT_SECRET);
          console.log('the signUp have the verifyToken',verifyToken)
-         const verifyEmailLink = `http://localhost:5173/verifyemail/${verifyToken}`;
+         const verifyEmailLink = `${process.env.FRONTEND_URL}/${verifyToken}`;
          console.log('the verify email link is',verifyEmailLink)
          await sendMailUtils(email,"verify your email",`click this email to verify your email:${verifyEmailLink}`)
          console.log('the newUser',newUser)
@@ -137,7 +137,7 @@ const forgottenPassword = async (req,res)=>{
             await emailuser.save();
             console.log('with token have the hashing is',emailuser.resetToken);
 
-            const resetPasslink = `http://localhost:5173/newPassword/${resetToken}`;
+            const resetPasslink = `${process.env.FRONTEND_URL}/${resetToken}`;
             //  this is for verification that the user is verified or not after you can interegate a third api
             
             await sendMailUtils(email,'password reset',`click to verify password:${resetPasslink}`);
