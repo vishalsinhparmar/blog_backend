@@ -11,7 +11,7 @@ mongoose.connect(`${process.env.MONGODB_URL}`)
 .then(()=> console.log('the dataBase is connected'))
 .catch((err)=>console.log(err.message))
 const corsOptions = {
-    origin:process.env.FRONTEND_URL, // Allowed origins
+    origin:[ "http://localhost:5174" || process.env.FRONTEND_URL], // Allowed origins
     methods: ["GET", "POST", "PUT", "DELETE","PATCH"], // Allowed methods
     credentials: true, // Allow cookies if needed
     sameSite:'None'
